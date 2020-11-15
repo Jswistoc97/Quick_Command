@@ -4,20 +4,15 @@ By Joseph Swistock
 This app generates a list of buttons, each of which executes a Terminal command.
 
 How to set up:
-Upon launching Quick Command.app for the first time, it will create a directory (Quick_Command) in your user folder
-For me, this is: /Users/joeswistoc/Quick_Command/
-
-In that directory, there are 2 files: 
-  config.txt
-    Where you enter in button titles and their associated commands
+Upon launching, there will be no buttons, because the config has nothing in it.
+To edit the config file and add commands, you must go to 'File' and then 'Open Config File'.
+Then, an editor will open up. The config file follows some basic rules.
+  -A valid line is a non-empty line with any uncommented text.
+  -Button titles are always on the previous valid line of their associated commands.
+  -Commands for those titles are on the valid line after.
+  -Comments (any text following '#') and trailing white space are ignored.
   
-  and command_exec_log.txt
-    Where the outputs of your commands as well as outputs of the program are
-    
-In config.txt, you may enter in button titles and the associated command, each on their own line.
-You are allowed empty lines, and comments (which are initiated by '#')
-
-Example:
+Example config:
 
    #This is a comment
    
@@ -27,3 +22,6 @@ Example:
    
    Launch Firefox #Another button title
    open /Applications/Firefox.app #Another command
+  
+All outputs are logged in a file called command_exec_log.txt, found in the automatically
+created "Quick_command" directory in your user profile (/Users/<Your username>/Quick_Command/command_exec_log.txt).
