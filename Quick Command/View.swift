@@ -14,6 +14,7 @@ import Cocoa
  */
 class View: NSView {
     
+    /* Variables */
     var viewController: ViewController?     /* Main View controller for the app */
     var _isFlipped: Bool = true             /* isFlipped means that it is ordered from the top down */
     

@@ -22,10 +22,10 @@ class ViewController: NSViewController {
     /* Constants */
     let horizontal_indent: CGFloat = 15     /* Left indent for the buttons */
     let vertical_indent: CGFloat = 10       /* Top indent for the buttons */
-    let row_scalar: CGFloat = 20            /* Approximate height of each row of buttons */
+    let row_scalar: CGFloat = 21.3          /* Approximate height of each row of buttons */
     let char_width_scalar: CGFloat = 9.6    /* Approximate width of each character of the font */
     
-    /* Global variables */
+    /* Variables */
     var button_tint: NSColor = .black       /* Tint color of the buttons */
     var inView: Bool = true                 /* Indicates whether the program isn't hidden or minimized */
     var grid: NSGridView?                   /* Grid with buttons */
@@ -33,8 +33,6 @@ class ViewController: NSViewController {
     
     /* User interface objects */
     @IBOutlet weak var noCommandsAvailableLabel: NSTextField!   /* Label that indicates there are no buttons */
-    
-    
     
     /*
      * This is called when the view is loaded.

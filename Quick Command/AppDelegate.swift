@@ -12,6 +12,7 @@ import SwiftUI
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
+    /* Variables */
     var viewController: ViewController?     /* Main view controller for app */
 
     /*

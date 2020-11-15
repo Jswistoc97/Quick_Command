@@ -17,7 +17,7 @@ class ConfigEditViewController: NSViewController {
     /* Working directory for the program */
     let pathname: String = "/Users/" + NSUserName() + "/Quick_Command/"
     
-    /* Global variables */
+    /* Variables */
     var mainViewController: ViewController?             /* The main window's view controller */
     var initialString: String?                          /* Initial loaded string */
     
@@ -110,6 +110,7 @@ class ConfigEditViewController: NSViewController {
  */
 public class EditorTextView: NSTextView{
     
+    /* Variables */
     var viewController: ConfigEditViewController?   /* Config editor's view controller */
     
     /*
