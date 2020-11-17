@@ -307,7 +307,7 @@ void exec_teardown_and_kill(){
     /* Free all memory */
     free_stack();
     
-    /* Kill every process (including the app itself) */
+    /* Kill every process (including the app itself). Effectively, killall command */
     kill(0, SIGKILL);
 }
 
