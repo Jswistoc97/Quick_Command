@@ -6,23 +6,7 @@
  * and executing commands.
  */
 
-/* Includes */
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdint.h>
-#include <string.h>
-#include <unistd.h>
-#include <stdarg.h>
-#include <signal.h>
 #include "command_excec.h"
-
-/*
- * Struct representing a process
- */
-typedef struct p_node{
-    int pid;                    /* Process ID */
-    struct p_node *next;        /* Next process node */
-}p_node;
 
 /* Globals */
 FILE *log_file;                 /* Log file, command_exec_log.txt */
