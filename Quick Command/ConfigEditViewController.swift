@@ -22,7 +22,7 @@ class ConfigEditViewController: NSViewController {
     var initialString: String?                          /* Initial loaded string */
     
     /* User interface objects */
-    @IBOutlet var EditTextView: EditorTextView!               /* The Text view of the editor */
+    @IBOutlet var EditTextView: EditorTextView!         /* The Text view of the editor */
     
     override func viewDidLoad() {
         super.viewDidLoad()
