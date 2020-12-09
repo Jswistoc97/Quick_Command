@@ -2,7 +2,7 @@
  * command_exec.h
  * Created by Joseph Swistock on 11/10/20
  *
- * Header file to command_exec.h
+ * Header file to command_exec.c
  */
 
 #ifndef command_excec_h
