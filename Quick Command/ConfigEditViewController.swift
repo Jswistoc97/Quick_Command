@@ -24,6 +24,10 @@ class ConfigEditViewController: NSViewController {
     /* User interface objects */
     @IBOutlet var EditTextView: EditorTextView!         /* The Text view of the editor */
     
+    /*
+     * This is called when the view for the config editor is loaded
+     * It does various configuration things
+     */
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -39,6 +43,10 @@ class ConfigEditViewController: NSViewController {
         /* Set reference in text view */
         EditTextView.viewController = self
     }
+    
+    /*
+     * This reads in the ASCII text from the config file and puts it into the text editor
+     */
     func loadConfig(){
         
         /* Read config file */

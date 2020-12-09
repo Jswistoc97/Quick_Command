@@ -33,6 +33,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     /*
      * Creates additional menu for dock menu
+     *
+     * Returns the menu that is displayed when app icon is right clicked on dock
      */
     func applicationDockMenu(_ sender: NSApplication) -> NSMenu? {
         

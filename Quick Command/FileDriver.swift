@@ -60,6 +60,8 @@ public class FileDriver{
     
     /*
      * Checks if a file exists, creates it if not
+     *
+     * Returns true if file now exists, false if error
      */
     static func prepareFile(path: String) -> Bool{
         

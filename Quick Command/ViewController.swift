@@ -5,7 +5,7 @@
  * Contains ViewController class, which subclasses the window's NSViewController
  * ViewController is the primary class used, as it drives the visual and interactive elements of the app
  *
- * Also contains the Button class, an subclass of the NSButton class
+ * Also contains the Button class, a subclass of the NSButton class
  */
 
 import Cocoa
@@ -28,7 +28,7 @@ class ViewController: NSViewController {
     /* Variables */
     var button_tint: NSColor = .black       /* Tint color of the buttons */
     var inView: Bool = true                 /* Indicates whether the program isn't hidden or minimized */
-    var grid: NSGridView?                   /* Grid with buttons */
+    var grid: NSGridView?                   /* Grid that contains buttons */
     var editWindow: NSWindow?               /* Config editor window */
     
     /* User interface objects */
@@ -37,7 +37,7 @@ class ViewController: NSViewController {
     /*
      * This is called when the view is loaded.
      *
-     * This is contains the majority of setup for the app.
+     * This contains the majority of setup for the app.
      */
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -113,8 +113,8 @@ class ViewController: NSViewController {
          * Note: Despite, getButtonsFromConfigFile() being a setup function
          * getButtonsFromConfigFile() is in viewDidAppear()
          * and NOT viewDidLoad(). This is because the window
-         * cannot change size before it is displayed. Or, in otherwords,
-         * it would crash if called in viewDidLoad().
+         * cannot change size before it is displayed.
+         * It would crash if called in viewDidLoad().
          *
          * Additionally, getButtonsFromConfigFile() is also used to refresh
          * the buttons in the event that config.txt changed while the app is running
@@ -135,6 +135,9 @@ class ViewController: NSViewController {
         inView = false
     }
     
+    /*
+     * This adds a button and corresponding command to the window
+     */
     func addButton(title: String, command: String){
         
         /* Hide 'No commands available' text */
@@ -423,7 +426,7 @@ class ViewController: NSViewController {
     }
     
     /*
-     * Occasionally syncs the config file and the app
+     * Occasionally (every 30 seconds) syncs the config file and the app
      */
     func background_refresher(){
         
