@@ -144,7 +144,7 @@ public class FileDriver{
             let url = URL(fileURLWithPath: path)
             
             /* Write contents to file */
-            try contents.write(to: url, atomically: false, encoding: .utf8)
+            try contents.write(to: url, atomically: true, encoding: .utf8)
             
             return true
         }

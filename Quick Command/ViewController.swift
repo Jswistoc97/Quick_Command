@@ -182,7 +182,7 @@ class ViewController: NSViewController {
         
         /* Get every useful line from config.txt */
         let lines = getStringsFromConfig()
-        
+                
         /* Set variables for loop */
         var ctr = 0
         var title: String
@@ -207,6 +207,7 @@ class ViewController: NSViewController {
             let size = NSSize(width: 175, height: 75)
             let frame = NSRect(origin: view.window!.frame.origin, size: size)
             view.window!.setFrame(frame, display: true)
+            return
         }
         
         /* For every 2 lines */
@@ -216,7 +217,7 @@ class ViewController: NSViewController {
             title = lines[ctr]
             command = lines[ctr + 1]
             
-            /* If there are more buttons from config than are in the grid */
+            /* If there are less buttons OR same number of buttons from config than are in the grid */
             if (grid!.numberOfRows <= (ctr / 2)){
 
                 /* Add button */
@@ -245,6 +246,7 @@ class ViewController: NSViewController {
         }
         
         /* Set ctr to reflect current position in grid */
+        ctr -= 2
         ctr = lines.count / 2
 
         /* Clean up extra buttons */
@@ -253,7 +255,6 @@ class ViewController: NSViewController {
             /* Delete button */
             grid!.cell(atColumnIndex: 0, rowIndex: ctr).contentView!.removeFromSuperview()
             grid!.removeRow(at: ctr)
-            ctr += 1
         }
         
         /* Resize window */
