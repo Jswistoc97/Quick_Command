@@ -268,7 +268,7 @@ class ViewController: NSViewController {
      */
     func getStringsFromConfig() -> [String]{
         
-        /* Prepare the working directory */
+        /* Ensure this is a valid directory */
         if !(FileDriver.prepareDirectory(path: pathname)){
             
             /* If working directory could not be prepared */
@@ -276,7 +276,7 @@ class ViewController: NSViewController {
             /* Program will be terminated */
         }
         
-        /* Prepare config file */
+        /* Ensure config file exists */
         if !(FileDriver.prepareFile(path: pathname + "config.txt", initContents: "#Config file, put button titles and commands in here\n")){
             
             /* If config file could not be preapared */
