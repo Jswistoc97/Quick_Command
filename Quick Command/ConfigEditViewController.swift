@@ -35,7 +35,12 @@ class ConfigEditViewController: NSViewController {
         EditTextView.font = NSFont(name: "Courier", size: 16)
         
         /* Load from the config file */
-        loadConfig()
+        if !(loadConfig()){
+            
+            /* If failure */
+            ViewController.debug_error_alert(message: "Uh oh!", file: #file, line: #line)
+            return
+        }
         
         /* Save initial text */
         initialString = EditTextView.string
@@ -46,20 +51,39 @@ class ConfigEditViewController: NSViewController {
     
     /*
      * This reads in the ASCII text from the config file and puts it into the text editor
+     *
+     * Returns true if successful, false if not
      */
-    func loadConfig(){
+    func loadConfig() -> Bool{
+        var contents: String? = nil
+        
+        /* Ensure there is a working directory */
+        if !(FileDriver.prepareDirectory(path: pathname)){
+            
+            /* If working directory could not be prepared */
+            ViewController.debug_error_alert(message: "Could not prepare " + pathname, file: #file, line: #line)
+            /* Program will be terminated */
+        }
+        
+        /* Ensure there is a working config file */
+        if !(FileDriver.prepareFile(path: pathname + "config.txt", initContents: "#Config file, put button titles and commands in here\n")){
+            
+            /* If config file could not be preapared */
+            ViewController.debug_error_alert(message: "Could not prepare " + pathname + "config.txt", file: #file, line: #line)
+            /* Program will terminate */
+        }
         
         /* Read config file */
-        let contents = FileDriver.readASCIIFile(path: pathname + "config.txt")
+        contents = FileDriver.readASCIIFile(path: pathname + "config.txt")
         
         /* Sanity check */
         if (contents == nil){
-            ViewController.warning_alert(title: "Uh oh!", message: "Unable to load config.txt")
-            return
+            return false
         }
         
         /* Put contents of congif file into the text editor */
         EditTextView.string = contents!
+        return true
     }
     
     /*
@@ -106,7 +130,12 @@ class ConfigEditViewController: NSViewController {
     @IBAction func resetFromLastSave(_ sender: Any) {
         
         /* Reload text from config */
-        loadConfig()
+        if !(loadConfig()){
+            
+            /* If failure*/
+            ViewController.debug_error_alert(message: "Could not load " + pathname + "config.txt", file: #file, line: #line)
+            /* App will terminate */
+        }
     }
     
 }

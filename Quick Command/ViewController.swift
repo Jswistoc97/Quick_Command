@@ -51,7 +51,7 @@ class ViewController: NSViewController {
         }
         
         /* Prepare config file */
-        if !(FileDriver.prepareFile(path: pathname + "config.txt")){
+        if !(FileDriver.prepareFile(path: pathname + "config.txt", initContents: "#Config file, put button titles and commands in here\n")){
             
             /* If config file could not be preapared */
             ViewController.debug_error_alert(message: "Could not prepare " + pathname + "config.txt", file: #file, line: #line)
@@ -267,6 +267,22 @@ class ViewController: NSViewController {
      * Returns a string array containing the needed information from config.txt
      */
     func getStringsFromConfig() -> [String]{
+        
+        /* Prepare the working directory */
+        if !(FileDriver.prepareDirectory(path: pathname)){
+            
+            /* If working directory could not be prepared */
+            ViewController.debug_error_alert(message: "Could not prepare " + pathname, file: #file, line: #line)
+            /* Program will be terminated */
+        }
+        
+        /* Prepare config file */
+        if !(FileDriver.prepareFile(path: pathname + "config.txt", initContents: "#Config file, put button titles and commands in here\n")){
+            
+            /* If config file could not be preapared */
+            ViewController.debug_error_alert(message: "Could not prepare " + pathname + "config.txt", file: #file, line: #line)
+            /* Program will terminate */
+        }
         
         /* Read config file */
         let contents = FileDriver.readASCIIFile(path: pathname + "config.txt")

@@ -63,7 +63,7 @@ public class FileDriver{
      *
      * Returns true if file now exists, false if error
      */
-    static func prepareFile(path: String) -> Bool{
+    static func prepareFile(path: String, initContents: String?) -> Bool{
         
         /* Create file manager to check existance of file */
         let fm = FileManager.init()
@@ -71,12 +71,25 @@ public class FileDriver{
         /* If file exists at path */
         if !(fm.fileExists(atPath: path)){
             
-            /* Write it */
-            if !(FileDriver.writeASCII(path: path, contents: "")){
+            /* If initial contents of file is nil */
+            if (initContents == nil){
                 
-                /* If writing fails */
-                return false
+                /* Write it with no contents */
+                if !(FileDriver.writeASCII(path: path, contents: "")){
+                    
+                    /* If writing fails */
+                    return false
+                }
             }
+            else{
+                /* Write it with the given initial contents */
+                if !(FileDriver.writeASCII(path: path, contents: initContents!)){
+                    
+                    /* If writing fails */
+                    return false
+                }
+            }
+            
         }
         return true
     }
